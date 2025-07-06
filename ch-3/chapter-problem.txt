@@ -1,0 +1,38 @@
+Problem Statement
+
+A produce dealer has a warehouse that stores a variety of fruits and vege-
+tables. When fruit is brought to the warehouse, various types of fruit may
+be mixed together. The dealer wants a machine that will sort the fruit ac-
+cording to type. There is a conveyer belt on which the fruit is loaded. This
+conveyer passes through a set of sensors, which measure three properties
+of the fruit: shape, texture and weight. These sensors are somewhat primi-
+tive. The shape sensor will output a 1 if the fruit is approximately round
+and a if it is more elliptical. The texture sensor will output a 1 if the sur-
+face of the fruit is smooth and a if it is rough. The weight sensor will
+output a 1 if the fruit is more than one pound and a if it is less than one
+pound.
+
+The three sensor outputs will then be input to a neural network. The pur-
+pose of the network is to decide which kind of fruit is on the conveyor, so
+that the fruit can be directed to the correct storage bin. To make the prob-
+lem even simpler, let’s assume that there are only two kinds of fruit on the
+conveyor: apples and oranges.
+
+As each fruit passes through the sensors it can be represented by a three-
+dimensional vector. The first element of the vector will represent shape,
+the second element will represent texture and the third element will repre-
+sent weight:
+
+p = [shape, texture, weight]
+
+Therefore, a prototype orange would be represented by  p1 = [1 -1 -1]
+
+and a prototype apple would be represented by p2 = [1 1 -1]
+
+The neural network will receive one three-dimensional input vector for
+each fruit on the conveyer and must make a decision as to whether the fruit
+is an orange or an apple .
+Now that we have defined this simple (trivial?) pattern recognition prob-
+lem, let’s look briefly at three different neural networks that could be used
+to solve it. The simplicity of our problem will facilitate our understanding
+of the operation of the networks.
