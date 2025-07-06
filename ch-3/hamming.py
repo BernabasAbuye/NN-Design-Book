@@ -52,23 +52,54 @@ class Hamming:
         self.bias = np.array([[3, 3]])  # hard coding the
 
     def feed_forward_layer(self, input_vec: list) -> list:
+        """
+        
+
+        Parameters
+        ----------
+        input_vec : list
+            The new input vector to test smilarity between input and prototype.
+
+        Returns
+        -------
+        list
+            the correlation between the prototype and the new data.
+
+        """
 
         a = self.W.dot(input_vec) + self.bias
         return a
 
     def recurrent_layer(self, a: list, e: float) -> list:
+        """
+        
+
+        Parameters
+        ----------
+        a : list
+            the output of the feedforward layer.
+        e : float
+            the constant number 1 / S - 1 which differentiate the winner from
+            the looser(the inhibitor).
+
+        Returns
+        -------
+        list
+            the final desicion [orange, apple] none zero.
+
+        """
         a2 = np.array(a).reshape(-1, 1)
         self.w2 = np.array([[1, -e], [-e, 1]])
 
 
         prev_a2 = np.zeros_like(a2)
-        calculating = True
-        while calculating:
+        
+        while not np.array_equal(a2, prev_a2):
             print('working')
             prev_a2 = a2.copy()
             a2 = np.dot(self.w2, a2)
             a2 = np.where(a2 > 0, a2, 0)
-            calculating = not np.array_equal(a2, prev_a2)
+            
         return a2.tolist()
 
 test = Hamming([1, -1, -1], [1, 1, -1])
