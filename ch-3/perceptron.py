@@ -15,7 +15,7 @@ def hardlims(net_n : float) -> int:
     Parameters
     ----------
     net_n : float
-        net_n = Wp + b 
+        net_n = Wp + b
         the net_n gives the dot product of the matrix weight (W) and the input
         scalar p plus the bias.
 
@@ -39,37 +39,37 @@ p_apple = np.array([1, 1, -1]) #apple shape, texture, wieght
 p_orange = np.array([1, -1, -1]) #orange shape, texture, wieght
 
 """
-    Identifying the weight 
-    
+    Identifying the weight
+
     we want an output of 1 for apple and -1 for orange it means
-    
+
     Wp + b = 0
-    
+
     for apple:
         W * p_apple + b >= 0
         W * p_orange + b < 0
-        
+
     The only difference for the two materials is texture(the middle elmt)
-    
+
     p_apple = texture value +1 and p_orange = texture -1 value
-    
+
     ideal boundary will be:
         texture > 0 wil be apple else orange
-        
+
     thus the other weight will be zero
-    
+
     W = [0 1 0] we only give attention to the texture
-    
+
 """
 
 W = np.array([0, 1, 0])
 
-net_apple = np.dot(W, p_apple) + 0 
+net_apple = np.dot(W, p_apple) + 0
 net_orange = np.dot(W, p_orange) + 0
 
 def apple_orange(a :float) -> str:
     """
-    
+
 
     Parameters
     ----------
@@ -87,4 +87,3 @@ def apple_orange(a :float) -> str:
 print(f'Input {p_apple} Result {apple_orange(hardlims(net_apple))}')
 
 print(f'Input {p_orange} Result {apple_orange(hardlims(net_orange))}')
-    
