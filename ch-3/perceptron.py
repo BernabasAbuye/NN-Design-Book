@@ -68,6 +68,20 @@ net_apple = np.dot(W, p_apple) + 0
 net_orange = np.dot(W, p_orange) + 0
 
 def apple_orange(a :float) -> str:
+    """
+    
+
+    Parameters
+    ----------
+    a : float
+        the output of the hardlim transfer function
+
+    Returns
+    -------
+    str
+        Interpration of the hard lim result for apple or orange classification.
+
+    """
     return "Apple" if a > 0 else "Orange"
 
 print(f'Input {p_apple} Result {apple_orange(hardlims(net_apple))}')
